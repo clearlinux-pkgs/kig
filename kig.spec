@@ -5,20 +5,20 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kig
-Version  : 18.08.0
-Release  : 1
-URL      : https://download.kde.org/stable/applications/18.08.0/src/kig-18.08.0.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.08.0/src/kig-18.08.0.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.08.0/src/kig-18.08.0.tar.xz.sig
+Version  : 18.12.2
+Release  : 2
+URL      : https://download.kde.org/stable/applications/18.12.2/src/kig-18.12.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.2/src/kig-18.12.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.2/src/kig-18.12.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
-Requires: kig-bin
-Requires: kig-lib
-Requires: kig-data
-Requires: kig-license
-Requires: kig-locales
-Requires: kig-man
+Requires: kig-bin = %{version}-%{release}
+Requires: kig-data = %{version}-%{release}
+Requires: kig-lib = %{version}-%{release}
+Requires: kig-license = %{version}-%{release}
+Requires: kig-locales = %{version}-%{release}
+Requires: kig-man = %{version}-%{release}
 BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
@@ -27,16 +27,21 @@ BuildRequires : pkg-config
 BuildRequires : python3-dev
 
 %description
-============================
-About the Geogebra Filter :
-============================
+Kig v@KIGVERSION@
+Kig developers <kde-edu-devel@kde.org>
+----------------------------------------------------------------------
+Kig: KDE Interactive Geometry
+Kig is a program for use in math classes in high school, to allow
+students to interactively explore geometric concepts.  For more
+information: check out the documentation ( open "help:/kig" in
+konqueror...)
 
 %package bin
 Summary: bin components for the kig package.
 Group: Binaries
-Requires: kig-data
-Requires: kig-license
-Requires: kig-man
+Requires: kig-data = %{version}-%{release}
+Requires: kig-license = %{version}-%{release}
+Requires: kig-man = %{version}-%{release}
 
 %description bin
 bin components for the kig package.
@@ -53,7 +58,7 @@ data components for the kig package.
 %package doc
 Summary: doc components for the kig package.
 Group: Documentation
-Requires: kig-man
+Requires: kig-man = %{version}-%{release}
 
 %description doc
 doc components for the kig package.
@@ -62,8 +67,8 @@ doc components for the kig package.
 %package lib
 Summary: lib components for the kig package.
 Group: Libraries
-Requires: kig-data
-Requires: kig-license
+Requires: kig-data = %{version}-%{release}
+Requires: kig-license = %{version}-%{release}
 
 %description lib
 lib components for the kig package.
@@ -94,27 +99,27 @@ man components for the kig package.
 
 
 %prep
-%setup -q -n kig-18.08.0
+%setup -q -n kig-18.12.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1535198051
-mkdir clr-build
+export SOURCE_DATE_EPOCH=1549867581
+mkdir -p clr-build
 pushd clr-build
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1535198051
+export SOURCE_DATE_EPOCH=1549867581
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/kig
-cp COPYING %{buildroot}/usr/share/doc/kig/COPYING
-cp COPYING.DOC %{buildroot}/usr/share/doc/kig/COPYING.DOC
-cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/doc/kig/cmake_modules_COPYING-CMAKE-SCRIPTS
+mkdir -p %{buildroot}/usr/share/package-licenses/kig
+cp COPYING %{buildroot}/usr/share/package-licenses/kig/COPYING
+cp COPYING.DOC %{buildroot}/usr/share/package-licenses/kig/COPYING.DOC
+cp cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kig/cmake_modules_COPYING-CMAKE-SCRIPTS
 pushd clr-build
 %make_install
 popd
@@ -448,7 +453,6 @@ popd
 /usr/share/doc/HTML/de/kig/index.docbook
 /usr/share/doc/HTML/de/kig/macro_wizard.png
 /usr/share/doc/HTML/de/kig/macros_at_work.png
-/usr/share/doc/HTML/de/kig/mainwindow.png
 /usr/share/doc/HTML/de/kig/script_wizard.png
 /usr/share/doc/HTML/de/kig/script_wizard_entering_code.png
 /usr/share/doc/HTML/de/kig/selecting_objects.png
@@ -509,13 +513,13 @@ popd
 /usr/lib64/qt5/plugins/kigpart.so
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/kig/COPYING
-/usr/share/doc/kig/COPYING.DOC
-/usr/share/doc/kig/cmake_modules_COPYING-CMAKE-SCRIPTS
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/kig/COPYING
+/usr/share/package-licenses/kig/COPYING.DOC
+/usr/share/package-licenses/kig/cmake_modules_COPYING-CMAKE-SCRIPTS
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/ca/man1/kig.1
 /usr/share/man/de/man1/kig.1
 /usr/share/man/es/man1/kig.1
