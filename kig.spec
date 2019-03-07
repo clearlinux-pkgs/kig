@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kig
-Version  : 18.12.2
-Release  : 3
-URL      : https://download.kde.org/stable/applications/18.12.2/src/kig-18.12.2.tar.xz
-Source0  : https://download.kde.org/stable/applications/18.12.2/src/kig-18.12.2.tar.xz
-Source99 : https://download.kde.org/stable/applications/18.12.2/src/kig-18.12.2.tar.xz.sig
+Version  : 18.12.3
+Release  : 4
+URL      : https://download.kde.org/stable/applications/18.12.3/src/kig-18.12.3.tar.xz
+Source0  : https://download.kde.org/stable/applications/18.12.3/src/kig-18.12.3.tar.xz
+Source99 : https://download.kde.org/stable/applications/18.12.3/src/kig-18.12.3.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -27,21 +27,15 @@ BuildRequires : pkg-config
 BuildRequires : python3-dev
 
 %description
-Kig v@KIGVERSION@
-Kig developers <kde-edu-devel@kde.org>
-----------------------------------------------------------------------
-Kig: KDE Interactive Geometry
-Kig is a program for use in math classes in high school, to allow
-students to interactively explore geometric concepts.  For more
-information: check out the documentation ( open "help:/kig" in
-konqueror...)
+============================
+About the Geogebra Filter :
+============================
 
 %package bin
 Summary: bin components for the kig package.
 Group: Binaries
 Requires: kig-data = %{version}-%{release}
 Requires: kig-license = %{version}-%{release}
-Requires: kig-man = %{version}-%{release}
 
 %description bin
 bin components for the kig package.
@@ -99,22 +93,23 @@ man components for the kig package.
 
 
 %prep
-%setup -q -n kig-18.12.2
+%setup -q -n kig-18.12.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1549885523
+export SOURCE_DATE_EPOCH=1551999035
 mkdir -p clr-build
 pushd clr-build
+export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags}
+make  %{?_smp_mflags} VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1549885523
+export SOURCE_DATE_EPOCH=1551999035
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kig
 cp COPYING %{buildroot}/usr/share/package-licenses/kig/COPYING
