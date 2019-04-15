@@ -6,11 +6,11 @@
 #
 Name     : kig
 Version  : 18.12.3
-Release  : 4
+Release  : 5
 URL      : https://download.kde.org/stable/applications/18.12.3/src/kig-18.12.3.tar.xz
 Source0  : https://download.kde.org/stable/applications/18.12.3/src/kig-18.12.3.tar.xz
 Source99 : https://download.kde.org/stable/applications/18.12.3/src/kig-18.12.3.tar.xz.sig
-Summary  : No detailed summary available
+Summary  : Interactive Geometry
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
 Requires: kig-bin = %{version}-%{release}
@@ -27,9 +27,14 @@ BuildRequires : pkg-config
 BuildRequires : python3-dev
 
 %description
-============================
-About the Geogebra Filter :
-============================
+Kig v@KIGVERSION@
+Kig developers <kde-edu-devel@kde.org>
+----------------------------------------------------------------------
+Kig: KDE Interactive Geometry
+Kig is a program for use in math classes in high school, to allow
+students to interactively explore geometric concepts.  For more
+information: check out the documentation ( open "help:/kig" in
+konqueror...)
 
 %package bin
 Summary: bin components for the kig package.
@@ -100,16 +105,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1551999035
+export SOURCE_DATE_EPOCH=1555333358
 mkdir -p clr-build
 pushd clr-build
-export LDFLAGS="${LDFLAGS} -fno-lto"
 %cmake ..
-make  %{?_smp_mflags} VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1551999035
+export SOURCE_DATE_EPOCH=1555333358
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kig
 cp COPYING %{buildroot}/usr/share/package-licenses/kig/COPYING
