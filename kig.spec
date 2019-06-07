@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kig
-Version  : 19.04.1
-Release  : 10
-URL      : https://download.kde.org/stable/applications/19.04.1/src/kig-19.04.1.tar.xz
-Source0  : https://download.kde.org/stable/applications/19.04.1/src/kig-19.04.1.tar.xz
-Source99 : https://download.kde.org/stable/applications/19.04.1/src/kig-19.04.1.tar.xz.sig
+Version  : 19.04.2
+Release  : 11
+URL      : https://download.kde.org/stable/applications/19.04.2/src/kig-19.04.2.tar.xz
+Source0  : https://download.kde.org/stable/applications/19.04.2/src/kig-19.04.2.tar.xz
+Source99 : https://download.kde.org/stable/applications/19.04.2/src/kig-19.04.2.tar.xz.sig
 Summary  : Interactive Geometry
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -98,14 +98,14 @@ man components for the kig package.
 
 
 %prep
-%setup -q -n kig-19.04.1
+%setup -q -n kig-19.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1557443943
+export SOURCE_DATE_EPOCH=1559891084
 mkdir -p clr-build
 pushd clr-build
 export AR=gcc-ar
@@ -120,7 +120,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1557443943
+export SOURCE_DATE_EPOCH=1559891084
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kig
 cp COPYING %{buildroot}/usr/share/package-licenses/kig/COPYING
