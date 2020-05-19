@@ -5,12 +5,12 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kig
-Version  : 20.04.0
-Release  : 23
-URL      : https://download.kde.org/stable/release-service/20.04.0/src/kig-20.04.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.0/src/kig-20.04.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.0/src/kig-20.04.0.tar.xz.sig
-Summary  : Interactive Geometry
+Version  : 20.04.1
+Release  : 24
+URL      : https://download.kde.org/stable/release-service/20.04.1/src/kig-20.04.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.04.1/src/kig-20.04.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.04.1/src/kig-20.04.1.tar.xz.sig
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
 Requires: kig-bin = %{version}-%{release}
@@ -22,19 +22,27 @@ Requires: kig-man = %{version}-%{release}
 BuildRequires : boost-dev
 BuildRequires : buildreq-cmake
 BuildRequires : buildreq-kde
+BuildRequires : extra-cmake-modules-data
+BuildRequires : karchive-dev
+BuildRequires : kconfigwidgets-dev
+BuildRequires : kcoreaddons-dev
+BuildRequires : kcrash-dev
+BuildRequires : kdoctools-dev
+BuildRequires : ki18n-dev
+BuildRequires : kiconthemes-dev
+BuildRequires : kparts-dev
 BuildRequires : ktexteditor-dev
+BuildRequires : kxmlgui-dev
 BuildRequires : pkg-config
 BuildRequires : python3-dev
+BuildRequires : qtbase-dev
+BuildRequires : qtsvg-dev
+BuildRequires : qtxmlpatterns-dev
 
 %description
-Kig v@KIGVERSION@
-Kig developers <kde-edu-devel@kde.org>
-----------------------------------------------------------------------
-Kig: KDE Interactive Geometry
-Kig is a program for use in math classes in high school, to allow
-students to interactively explore geometric concepts.  For more
-information: check out the documentation ( open "help:/kig" in
-konqueror...)
+============================
+About the Geogebra Filter :
+============================
 
 %package bin
 Summary: bin components for the kig package.
@@ -98,37 +106,36 @@ man components for the kig package.
 
 
 %prep
-%setup -q -n kig-20.04.0
-cd %{_builddir}/kig-20.04.0
+%setup -q -n kig-20.04.1
+cd %{_builddir}/kig-20.04.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1587685400
+export SOURCE_DATE_EPOCH=1589847463
 mkdir -p clr-build
 pushd clr-build
-# -Werror is for werrorists
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
 make  %{?_smp_mflags}  VERBOSE=1
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1587685400
+export SOURCE_DATE_EPOCH=1589847463
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kig
-cp %{_builddir}/kig-20.04.0/COPYING %{buildroot}/usr/share/package-licenses/kig/8cf4afb0636055f7cacd1b6955e0e8ebec7888f5
-cp %{_builddir}/kig-20.04.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/kig/1bd373e4851a93027ba70064bd7dbdc6827147e1
-cp %{_builddir}/kig-20.04.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kig/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kig-20.04.1/COPYING %{buildroot}/usr/share/package-licenses/kig/8cf4afb0636055f7cacd1b6955e0e8ebec7888f5
+cp %{_builddir}/kig-20.04.1/COPYING.DOC %{buildroot}/usr/share/package-licenses/kig/1bd373e4851a93027ba70064bd7dbdc6827147e1
+cp %{_builddir}/kig-20.04.1/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kig/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
