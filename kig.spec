@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xDBD2CE893E2D1C87 (cfeck@kde.org)
 #
 Name     : kig
-Version  : 20.04.2
-Release  : 25
-URL      : https://download.kde.org/stable/release-service/20.04.2/src/kig-20.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/20.04.2/src/kig-20.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/20.04.2/src/kig-20.04.2.tar.xz.sig
+Version  : 20.08.0
+Release  : 26
+URL      : https://download.kde.org/stable/release-service/20.08.0/src/kig-20.08.0.tar.xz
+Source0  : https://download.kde.org/stable/release-service/20.08.0/src/kig-20.08.0.tar.xz
+Source1  : https://download.kde.org/stable/release-service/20.08.0/src/kig-20.08.0.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0
@@ -106,15 +106,15 @@ man components for the kig package.
 
 
 %prep
-%setup -q -n kig-20.04.2
-cd %{_builddir}/kig-20.04.2
+%setup -q -n kig-20.08.0
+cd %{_builddir}/kig-20.08.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591901690
+export SOURCE_DATE_EPOCH=1597783649
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -126,16 +126,16 @@ export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %cmake ..
-make  %{?_smp_mflags}  VERBOSE=1
+make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1591901690
+export SOURCE_DATE_EPOCH=1597783649
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kig
-cp %{_builddir}/kig-20.04.2/COPYING %{buildroot}/usr/share/package-licenses/kig/8cf4afb0636055f7cacd1b6955e0e8ebec7888f5
-cp %{_builddir}/kig-20.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/kig/1bd373e4851a93027ba70064bd7dbdc6827147e1
-cp %{_builddir}/kig-20.04.2/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kig/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kig-20.08.0/COPYING %{buildroot}/usr/share/package-licenses/kig/8cf4afb0636055f7cacd1b6955e0e8ebec7888f5
+cp %{_builddir}/kig-20.08.0/COPYING.DOC %{buildroot}/usr/share/package-licenses/kig/1bd373e4851a93027ba70064bd7dbdc6827147e1
+cp %{_builddir}/kig-20.08.0/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kig/ff3ed70db4739b3c6747c7f624fe2bad70802987
 pushd clr-build
 %make_install
 popd
@@ -538,6 +538,7 @@ popd
 /usr/share/man/de/man1/kig.1
 /usr/share/man/es/man1/kig.1
 /usr/share/man/et/man1/kig.1
+/usr/share/man/fr/man1/kig.1
 /usr/share/man/it/man1/kig.1
 /usr/share/man/man1/kig.1
 /usr/share/man/nl/man1/kig.1
