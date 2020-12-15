@@ -6,7 +6,7 @@
 #
 Name     : kig
 Version  : 20.12.0
-Release  : 31
+Release  : 32
 URL      : https://download.kde.org/stable/release-service/20.12.0/src/kig-20.12.0.tar.xz
 Source0  : https://download.kde.org/stable/release-service/20.12.0/src/kig-20.12.0.tar.xz
 Source1  : https://download.kde.org/stable/release-service/20.12.0/src/kig-20.12.0.tar.xz.sig
