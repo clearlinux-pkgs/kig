@@ -5,14 +5,14 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kig
-Version  : 21.04.2
-Release  : 36
-URL      : https://download.kde.org/stable/release-service/21.04.2/src/kig-21.04.2.tar.xz
-Source0  : https://download.kde.org/stable/release-service/21.04.2/src/kig-21.04.2.tar.xz
-Source1  : https://download.kde.org/stable/release-service/21.04.2/src/kig-21.04.2.tar.xz.sig
+Version  : 21.08.1
+Release  : 37
+URL      : https://download.kde.org/stable/release-service/21.08.1/src/kig-21.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/21.08.1/src/kig-21.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/21.08.1/src/kig-21.08.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : BSD-3-Clause GFDL-1.2 GPL-2.0
+License  : BSD-3-Clause GFDL-1.2 GPL-2.0 GPL-3.0 LGPL-2.1
 Requires: kig-bin = %{version}-%{release}
 Requires: kig-data = %{version}-%{release}
 Requires: kig-lib = %{version}-%{release}
@@ -107,36 +107,41 @@ man components for the kig package.
 
 
 %prep
-%setup -q -n kig-21.04.2
-cd %{_builddir}/kig-21.04.2
+%setup -q -n kig-21.08.1
+cd %{_builddir}/kig-21.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1623385669
+export SOURCE_DATE_EPOCH=1630912490
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %cmake ..
 make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1623385669
+export SOURCE_DATE_EPOCH=1630912490
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kig
-cp %{_builddir}/kig-21.04.2/COPYING %{buildroot}/usr/share/package-licenses/kig/8cf4afb0636055f7cacd1b6955e0e8ebec7888f5
-cp %{_builddir}/kig-21.04.2/COPYING.DOC %{buildroot}/usr/share/package-licenses/kig/1bd373e4851a93027ba70064bd7dbdc6827147e1
-cp %{_builddir}/kig-21.04.2/cmake/modules/COPYING-CMAKE-SCRIPTS %{buildroot}/usr/share/package-licenses/kig/ff3ed70db4739b3c6747c7f624fe2bad70802987
+cp %{_builddir}/kig-21.08.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kig/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe
+cp %{_builddir}/kig-21.08.1/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/kig/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
+cp %{_builddir}/kig-21.08.1/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kig/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/kig-21.08.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kig/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/kig-21.08.1/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kig/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/kig-21.08.1/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kig/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/kig-21.08.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kig/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kig-21.08.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kig/7d9831e05094ce723947d729c2a46a09d6e90275
 pushd clr-build
 %make_install
 popd
@@ -531,13 +536,16 @@ popd
 
 %files lib
 %defattr(-,root,root,-)
-/usr/lib64/qt5/plugins/kigpart.so
+/usr/lib64/qt5/plugins/kf5/parts/kigpart.so
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/kig/1bd373e4851a93027ba70064bd7dbdc6827147e1
-/usr/share/package-licenses/kig/8cf4afb0636055f7cacd1b6955e0e8ebec7888f5
-/usr/share/package-licenses/kig/ff3ed70db4739b3c6747c7f624fe2bad70802987
+/usr/share/package-licenses/kig/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+/usr/share/package-licenses/kig/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+/usr/share/package-licenses/kig/7d9831e05094ce723947d729c2a46a09d6e90275
+/usr/share/package-licenses/kig/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+/usr/share/package-licenses/kig/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
+/usr/share/package-licenses/kig/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe
 
 %files man
 %defattr(0644,root,root,0755)
