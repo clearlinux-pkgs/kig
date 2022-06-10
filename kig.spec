@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kig
-Version  : 22.04.1
-Release  : 46
-URL      : https://download.kde.org/stable/release-service/22.04.1/src/kig-22.04.1.tar.xz
-Source0  : https://download.kde.org/stable/release-service/22.04.1/src/kig-22.04.1.tar.xz
-Source1  : https://download.kde.org/stable/release-service/22.04.1/src/kig-22.04.1.tar.xz.sig
+Version  : 22.04.2
+Release  : 47
+URL      : https://download.kde.org/stable/release-service/22.04.2/src/kig-22.04.2.tar.xz
+Source0  : https://download.kde.org/stable/release-service/22.04.2/src/kig-22.04.2.tar.xz
+Source1  : https://download.kde.org/stable/release-service/22.04.2/src/kig-22.04.2.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 GPL-3.0 LGPL-2.1
@@ -107,15 +107,15 @@ man components for the kig package.
 
 
 %prep
-%setup -q -n kig-22.04.1
-cd %{_builddir}/kig-22.04.1
+%setup -q -n kig-22.04.2
+cd %{_builddir}/kig-22.04.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1652652192
+export SOURCE_DATE_EPOCH=1654839108
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -131,17 +131,17 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1652652192
+export SOURCE_DATE_EPOCH=1654839108
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kig
-cp %{_builddir}/kig-22.04.1/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kig/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe
-cp %{_builddir}/kig-22.04.1/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/kig/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
-cp %{_builddir}/kig-22.04.1/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kig/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/kig-22.04.1/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kig/3e8971c6c5f16674958913a94a36b1ea7a00ac46
-cp %{_builddir}/kig-22.04.1/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kig/2123756e0b1fc8243547235a33c0fcabfe3b9a51
-cp %{_builddir}/kig-22.04.1/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kig/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
-cp %{_builddir}/kig-22.04.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kig/7d9831e05094ce723947d729c2a46a09d6e90275
-cp %{_builddir}/kig-22.04.1/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kig/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kig-22.04.2/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kig/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe
+cp %{_builddir}/kig-22.04.2/LICENSES/GFDL-1.2-or-later.txt %{buildroot}/usr/share/package-licenses/kig/ee03d68f6be20b170e5ea5d114d6acafb3f2d1dc
+cp %{_builddir}/kig-22.04.2/LICENSES/GPL-2.0-only.txt %{buildroot}/usr/share/package-licenses/kig/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/kig-22.04.2/LICENSES/GPL-2.0-or-later.txt %{buildroot}/usr/share/package-licenses/kig/3e8971c6c5f16674958913a94a36b1ea7a00ac46
+cp %{_builddir}/kig-22.04.2/LICENSES/GPL-3.0-only.txt %{buildroot}/usr/share/package-licenses/kig/2123756e0b1fc8243547235a33c0fcabfe3b9a51
+cp %{_builddir}/kig-22.04.2/LICENSES/LGPL-2.1-or-later.txt %{buildroot}/usr/share/package-licenses/kig/81b58c89ceef8e9f8bd5d00a287edbd15f9d3567
+cp %{_builddir}/kig-22.04.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kig/7d9831e05094ce723947d729c2a46a09d6e90275
+cp %{_builddir}/kig-22.04.2/LICENSES/LicenseRef-KDE-Accepted-GPL.txt %{buildroot}/usr/share/package-licenses/kig/7d9831e05094ce723947d729c2a46a09d6e90275
 pushd clr-build
 %make_install
 popd
