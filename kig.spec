@@ -6,11 +6,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kig
-Version  : 23.08.0
-Release  : 63
-URL      : https://download.kde.org/stable/release-service/23.08.0/src/kig-23.08.0.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.08.0/src/kig-23.08.0.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.08.0/src/kig-23.08.0.tar.xz.sig
+Version  : 23.08.1
+Release  : 64
+URL      : https://download.kde.org/stable/release-service/23.08.1/src/kig-23.08.1.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.1/src/kig-23.08.1.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.1/src/kig-23.08.1.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 GPL-3.0 LGPL-2.1
@@ -108,15 +108,15 @@ man components for the kig package.
 
 
 %prep
-%setup -q -n kig-23.08.0
-cd %{_builddir}/kig-23.08.0
+%setup -q -n kig-23.08.1
+cd %{_builddir}/kig-23.08.1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1693024532
+export SOURCE_DATE_EPOCH=1695086766
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -149,7 +149,7 @@ make  %{?_smp_mflags}
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1693024532
+export SOURCE_DATE_EPOCH=1695086766
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kig
 cp %{_builddir}/kig-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kig/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe || :
