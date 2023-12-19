@@ -8,11 +8,11 @@
 # Source0 file verified with key 0xBB463350D6EF31EF (heiko@shruuf.de)
 #
 Name     : kig
-Version  : 23.08.3
-Release  : 67
-URL      : https://download.kde.org/stable/release-service/23.08.3/src/kig-23.08.3.tar.xz
-Source0  : https://download.kde.org/stable/release-service/23.08.3/src/kig-23.08.3.tar.xz
-Source1  : https://download.kde.org/stable/release-service/23.08.3/src/kig-23.08.3.tar.xz.sig
+Version  : 23.08.4
+Release  : 68
+URL      : https://download.kde.org/stable/release-service/23.08.4/src/kig-23.08.4.tar.xz
+Source0  : https://download.kde.org/stable/release-service/23.08.4/src/kig-23.08.4.tar.xz
+Source1  : https://download.kde.org/stable/release-service/23.08.4/src/kig-23.08.4.tar.xz.sig
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : BSD-3-Clause GFDL-1.2 GPL-2.0 GPL-3.0 LGPL-2.1
@@ -110,15 +110,15 @@ man components for the kig package.
 
 
 %prep
-%setup -q -n kig-23.08.3
-cd %{_builddir}/kig-23.08.3
+%setup -q -n kig-23.08.4
+cd %{_builddir}/kig-23.08.4
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1701991449
+export SOURCE_DATE_EPOCH=1702970845
 mkdir -p clr-build
 pushd clr-build
 export GCC_IGNORE_WERROR=1
@@ -177,7 +177,7 @@ FFLAGS="$CLEAR_INTERMEDIATE_FFLAGS"
 FCFLAGS="$CLEAR_INTERMEDIATE_FCFLAGS"
 ASFLAGS="$CLEAR_INTERMEDIATE_ASFLAGS"
 LDFLAGS="$CLEAR_INTERMEDIATE_LDFLAGS"
-export SOURCE_DATE_EPOCH=1701991449
+export SOURCE_DATE_EPOCH=1702970845
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/kig
 cp %{_builddir}/kig-%{version}/LICENSES/BSD-3-Clause.txt %{buildroot}/usr/share/package-licenses/kig/f1946dab78e58c04c8c25ec6b074f5fc5c2830fe || :
